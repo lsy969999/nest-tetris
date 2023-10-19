@@ -14,10 +14,12 @@
 
         const socket = io('http://localhost:3000', { transports: ['websocket'] })
 
+        {{!-- 
         setInterval(function(){
             console.log('socket', socket)
             socket.emit(TO_SERVER, {data: 'test'})
         }, 1000)
+        --}}
 
         socket.on(TO_CLIENT, function(data){
             console.log('data', data)
