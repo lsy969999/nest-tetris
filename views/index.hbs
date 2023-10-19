@@ -1,11 +1,27 @@
 {{#> layout}}
   {{#*inline "content"}}
     <main>
-        <h2></h2>
+        <h2>Index</h2>
     </main>
+  {{/inline}}
+  {{#*inline "script"}}
     <script>
         var message = '{{message}}'
         console.log('hi' + message)
+
+        const TO_SERVER = 'toServer';
+        const TO_CLIENT = 'toClient';
+
+        const socket = io('http://localhost:3000', { transports: ['websocket'] })
+
+        setInterval(function(){
+            console.log('socket', socket)
+            socket.emit(TO_SERVER, {data: 'test'})
+        }, 1000)
+
+        socket.on(TO_CLIENT, function(data){
+            console.log('data', data)
+        })
     </script>
   {{/inline}}
 {{/layout}}
