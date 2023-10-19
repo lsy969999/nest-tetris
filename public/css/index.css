@@ -1,0 +1,23 @@
+.black {
+    background-color: black;
+}
+
+.item {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    font-size: 7px;
+    color: gray;
+}
+
+.item_0 {
+    background-color: white;
+}
+
+.item_1 {
+    background-color: black;
+}
+
+.flex {
+    display: flex;
+}

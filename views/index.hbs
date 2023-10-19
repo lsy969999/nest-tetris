@@ -2,18 +2,26 @@
   {{#*inline "content"}}
     <main>
         <h2>Index</h2>
+        <div class="black"></div>
+        {{#each template}}
+            <div class="flex">
+                {{#each this}}
+                    <span class="item item_{{this}}">{{this}}</span>
+                {{/each}}
+            </div>
+        {{/each}}
+        <div>
+            <button>START</button>
+            <button>END</button>
+        </div>
     </main>
   {{/inline}}
   {{#*inline "script"}}
     <script>
-        var message = '{{message}}'
-        console.log('hi' + message)
-
         const TO_SERVER = 'toServer';
         const TO_CLIENT = 'toClient';
-
-        const socket = io('http://localhost:3000', { transports: ['websocket'] })
-
+        const URL = 'http://localhost:3000'
+        const socket = io(URL, { transports: ['websocket'] })
         {{!-- 
         setInterval(function(){
             console.log('socket', socket)
@@ -24,6 +32,62 @@
         socket.on(TO_CLIENT, function(data){
             console.log('data', data)
         })
+
+        const START = 'START';
+        const END = 'END';
+        function start(){
+            socket.emit(TO_SERVER, {type: START})
+        }
+        function end(){
+            socket.emit(TO_SERVER, {type: END})
+        }
+    </script>
+    <script>
+        var message = '{{message}}';
+        var template = [{{#each template}} [{{#each this}} {{this}}, {{/each}}], {{/each}}]
+        console.log('hi' + message)
+    </script>
+    <script>
+        const ArrowUp = 'ArrowUp';
+        const ArrowLeft = 'ArrowLeft';
+        const ArrowRight = 'ArrowRight';
+        const ArrowDown = 'ArrowDown';
+        const Space = 'Space';
+        window.addEventListener('keydown', function(e){
+            if (e.key === ArrowDown) {
+                down()
+            } else if (e.key === ArrowUp) {
+                up()
+            } else if (e.key === ArrowLeft) {
+                left()
+            } else if (e.key === ArrowRight) {
+                right()
+            } else {
+                space()
+            }
+        })
+    </script>
+    <script>
+        const LEFT = 'LEFT';
+        const RIGHT = 'RIGHT';
+        const UP = 'UP';
+        const DOWN = 'DOWN';
+        const SPACE = 'SPACE';
+        function left(){
+            socket.emit(TO_SERVER, {type: LEFT})
+        }
+        function right(){
+            socket.emit(TO_SERVER, {type: RIGHT})
+        }
+        function up(){
+            socket.emit(TO_SERVER, {type: UP})
+        }
+        function down(){
+            socket.emit(TO_SERVER, {type: DOWN})
+        }
+        function space(){
+            socket.emit(TO_SERVER, {type: SPACE})
+        }
     </script>
   {{/inline}}
 {{/layout}}
