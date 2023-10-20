@@ -4,7 +4,11 @@ import {Logger} from '@nestjs/common'
 
 const TO_SERVER = 'toServer'
 const TO_CLIENT = 'toClient'
-
+/**
+ * 네모만 왼쪽 4칸
+ * 나머지 왼쪽 3칸
+ * 
+*/
 @WebSocketGateway({
     cors: {
         origin: '*'

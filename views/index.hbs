@@ -11,8 +11,8 @@
             </div>
         {{/each}}
         <div>
-            <button>START</button>
-            <button>END</button>
+            <button onclick="start()">START</button>
+            <button onclick="end()">END</button>
         </div>
     </main>
   {{/inline}}
@@ -62,8 +62,10 @@
                 left()
             } else if (e.key === ArrowRight) {
                 right()
-            } else {
+            } else if (e.key === Space) {
                 space()
+            } else {
+                console.log('KEY NOT MATCHED')
             }
         })
     </script>
