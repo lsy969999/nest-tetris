@@ -10,8 +10,7 @@ export class AppController {
   getHello() {
     return {
       message: 'Hello World!',
-      template: Array(20)
-                  .fill(Array(10).fill(0))
-    }
+      template: Array(20).fill(Array(10).fill(0)),
+    };
   }
 }
