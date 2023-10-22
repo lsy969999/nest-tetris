@@ -13,4 +13,11 @@ export class AppController {
       template: Array(20).fill(Array(10).fill(0)),
     };
   }
+
+  @Get('test')
+  getTest() {
+    return {
+      message: 'hihihi',
+    };
+  }
 }
