@@ -1,7 +1,7 @@
 'use client'
 
 import { space } from 'postcss/lib/list';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import GameTile from './GameTile';
 import {Socket} from 'socket.io-client'
 const ArrowUp = 'ArrowUp';
@@ -16,10 +16,12 @@ const DOWN = 'DOWN';
 const SPACE = 'SPACE';
 
 interface GamePadParam {
-  socket: Socket | undefined
+  socket: Socket | undefined,
+  tiles: any[][],
+  setTiles: any
 }
 
-const GamePad = ({socket}: GamePadParam) => {
+const GamePad = ({socket, tiles, setTiles}: GamePadParam) => {
   useEffect(()=>{
     console.log('[GamePad] useEffect')
     const keydownLister = (e: KeyboardEvent) => {
@@ -67,12 +69,12 @@ const GamePad = ({socket}: GamePadParam) => {
     <div>
       <div className='flex flex-col'>
         {
-        Array.from({length:20}, ()=>Array.from({length: 10}, (_, i)=>i+1))
-          .map(p=>{
+          tiles.map((p, i)=>{
             return (
-              <div className='flex'>
-                {p.map(p2=>{
-                        return (<GameTile color='red'></GameTile>)      
+              <div key={i} className='flex'>
+                {p.map((p2, i2)=>{
+                        // console.log(p2)
+                        return (<GameTile key={`${i}_${i2}`} tiles={p2}></GameTile>)      
                       })
                 }
               </div>
