@@ -1,5 +1,4 @@
-
-import Image from 'next/image'
+import Link from "next/link";
 
 export default async function Home() {
   const test = await fetch('http://localhost:3000/api/test');
@@ -8,6 +7,7 @@ export default async function Home() {
     <main className="">
       <div>
         main {test2.message}
+        <Link href={"/room"} >go room</Link>
       </div>
     </main>
   )
