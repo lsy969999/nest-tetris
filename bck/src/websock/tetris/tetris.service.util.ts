@@ -1,10 +1,18 @@
-import { Board, Brick, BrickColor, BrickPosition, BrickReserved, BrickStatus, BrickType } from "./tetris.type";
+import {
+  Board,
+  Brick,
+  BrickColor,
+  BrickPosition,
+  BrickReserved,
+  BrickStatus,
+  BrickType,
+} from './tetris.type';
 
-export function boardCreate(row: number = 10, col: number = 20): Board{
+export function boardCreate(row = 10, col = 20): Board {
   return Array.from({ length: col }, () =>
     Array.from(
       { length: row },
-      (_, index): Brick => [
+      (): Brick => [
         BrickType.NONE,
         BrickStatus.NONE,
         BrickPosition.UP,
@@ -16,26 +24,26 @@ export function boardCreate(row: number = 10, col: number = 20): Board{
 }
 
 export function genBrickBoard(brickType: BrickType): Board {
-  if(brickType === BrickType.I){
+  if (brickType === BrickType.I) {
     return genBrickIBoard();
-  } else if (brickType === BrickType.J){
+  } else if (brickType === BrickType.J) {
     return genBrickJBoard();
-  } else if (brickType === BrickType.L){
+  } else if (brickType === BrickType.L) {
     return genBrickLBoard();
-  } else if (brickType === BrickType.O){
+  } else if (brickType === BrickType.O) {
     return genBrickOBoard();
-  } else if (brickType === BrickType.S){
+  } else if (brickType === BrickType.S) {
     return genBrickSBoard();
-  } else if (brickType === BrickType.T){
+  } else if (brickType === BrickType.T) {
     return genBrickTBoard();
-  } else if (brickType === BrickType.Z){
+  } else if (brickType === BrickType.Z) {
     return genBrickZBoard();
   } else {
     return genBrickNoneBoard();
   }
 }
 
-function genBrickIBoard(): Board{
+function genBrickIBoard(): Board {
   return [
     [
       genBrick(),
@@ -64,7 +72,7 @@ function genBrickIBoard(): Board{
   ];
 }
 
-function genBrickJBoard(): Board{
+function genBrickJBoard(): Board {
   return [
     [
       genBrick(),
@@ -93,7 +101,7 @@ function genBrickJBoard(): Board{
   ];
 }
 
-function genBrickLBoard(): Board{
+function genBrickLBoard(): Board {
   return [
     [
       genBrick(),
@@ -122,7 +130,7 @@ function genBrickLBoard(): Board{
   ];
 }
 
-function genBrickOBoard(): Board{
+function genBrickOBoard(): Board {
   return [
     [
       genBrick(),
@@ -151,7 +159,7 @@ function genBrickOBoard(): Board{
   ];
 }
 
-function genBrickSBoard(): Board{
+function genBrickSBoard(): Board {
   return [
     [
       genBrick(),
@@ -180,7 +188,7 @@ function genBrickSBoard(): Board{
   ];
 }
 
-function genBrickTBoard(): Board{
+function genBrickTBoard(): Board {
   return [
     [
       genBrick(),
@@ -238,7 +246,7 @@ function genBrickNoneBoard(): Board {
   ];
 }
 
-function genBrickZBoard(): Board{
+function genBrickZBoard(): Board {
   return [
     [
       genBrick(),
@@ -267,8 +275,8 @@ function genBrickZBoard(): Board{
   ];
 }
 
-function genBrick(brickType?: BrickType): Brick{
-  if(brickType === BrickType.I){
+function genBrick(brickType?: BrickType): Brick {
+  if (brickType === BrickType.I) {
     return genBrickI();
   } else if (brickType === BrickType.J) {
     return genBrickJ();
@@ -287,82 +295,82 @@ function genBrick(brickType?: BrickType): Brick{
   }
 }
 
-function genBrickI(): Brick{
+function genBrickI(): Brick {
   return [
     BrickType.I,
     BrickStatus.GENERATING,
     BrickPosition.UP,
     BrickColor.SKY,
-    BrickReserved.NONE
-  ]
+    BrickReserved.NONE,
+  ];
 }
 
-function genBrickJ(): Brick{
+function genBrickJ(): Brick {
   return [
     BrickType.J,
     BrickStatus.GENERATING,
     BrickPosition.UP,
     BrickColor.BLUE,
-    BrickReserved.NONE
-  ]
+    BrickReserved.NONE,
+  ];
 }
 
-function genBrickL(): Brick{
+function genBrickL(): Brick {
   return [
     BrickType.L,
     BrickStatus.GENERATING,
     BrickPosition.UP,
     BrickColor.ORANGE,
-    BrickReserved.NONE
-  ]
+    BrickReserved.NONE,
+  ];
 }
 
-function genBrickO(): Brick{
+function genBrickO(): Brick {
   return [
     BrickType.O,
     BrickStatus.GENERATING,
     BrickPosition.UP,
     BrickColor.YELLOW,
-    BrickReserved.NONE
-  ]
+    BrickReserved.NONE,
+  ];
 }
 
-function genBrickS(): Brick{
+function genBrickS(): Brick {
   return [
     BrickType.S,
     BrickStatus.GENERATING,
     BrickPosition.UP,
     BrickColor.GREEN,
-    BrickReserved.NONE
-  ]
+    BrickReserved.NONE,
+  ];
 }
 
-function genBrickT(): Brick{
+function genBrickT(): Brick {
   return [
     BrickType.T,
     BrickStatus.GENERATING,
     BrickPosition.UP,
     BrickColor.PURPLE,
-    BrickReserved.NONE
-  ]
+    BrickReserved.NONE,
+  ];
 }
 
-function genBrickZ(): Brick{
+function genBrickZ(): Brick {
   return [
     BrickType.Z,
     BrickStatus.GENERATING,
     BrickPosition.UP,
     BrickColor.RED,
-    BrickReserved.NONE
-  ]
+    BrickReserved.NONE,
+  ];
 }
 
-function genBrickNONE(): Brick{
+function genBrickNONE(): Brick {
   return [
     BrickType.NONE,
     BrickStatus.NONE,
     BrickPosition.NONE,
     BrickColor.NONE,
-    BrickReserved.NONE
-  ]
+    BrickReserved.NONE,
+  ];
 }

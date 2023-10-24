@@ -1,3 +1,1 @@
-export class TetrisController {
-  
-}
+export class TetrisController {}

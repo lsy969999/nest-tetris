@@ -1,3 +1,3 @@
-export default function TetrisFactory(){
-
+export default function TetrisFactory() {
+  return {};
 }
