@@ -1,5 +1,5 @@
 import { TetrisModel } from '../tetris.model';
-import { boardCreate, genBrickBoard } from '../tetris.service.util';
+import { boardCreate, genBrickBoard } from '../tetris.service.gen.util';
 import { BrickType } from '../tetris.type';
 import * as _ from 'lodash';
 

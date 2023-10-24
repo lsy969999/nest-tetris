@@ -1,37 +1,37 @@
-import { ITetrisService } from './tetris.service';
+// import { ITetrisService } from './tetris.service';
 
-export class TetrisController {
-  constructor(private tetrisService: ITetrisService) {}
+// export class TetrisController {
+//   constructor(private tetrisService: ITetrisService) {}
 
-  start() {
-    this.tetrisService.start();
-  }
+//   start() {
+//     this.tetrisService.start();
+//   }
 
-  pause() {
-    this.tetrisService.pause();
-  }
+//   pause() {
+//     this.tetrisService.pause();
+//   }
 
-  end() {
-    this.tetrisService.end();
-  }
+//   end() {
+//     this.tetrisService.end();
+//   }
 
-  right() {
-    this.tetrisService.inputRight();
-  }
+//   right() {
+//     this.tetrisService.inputRight();
+//   }
 
-  up() {
-    this.tetrisService.inputUp();
-  }
+//   up() {
+//     this.tetrisService.inputUp();
+//   }
 
-  left() {
-    this.tetrisService.inputLeft();
-  }
+//   left() {
+//     this.tetrisService.inputLeft();
+//   }
 
-  down() {
-    this.tetrisService.inputDown();
-  }
+//   down() {
+//     this.tetrisService.inputDown();
+//   }
 
-  hold() {
-    this.tetrisService.inputHold();
-  }
-}
+//   hold() {
+//     this.tetrisService.inputHold();
+//   }
+// }

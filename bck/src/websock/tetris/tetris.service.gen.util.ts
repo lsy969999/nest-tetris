@@ -1,3 +1,4 @@
+import { getRandomInt } from 'src/util/random';
 import {
   Board,
   Brick,
@@ -275,7 +276,7 @@ function genBrickZBoard(): Board {
   ];
 }
 
-function genBrick(brickType?: BrickType): Brick {
+export function genBrick(brickType?: BrickType): Brick {
   if (brickType === BrickType.I) {
     return genBrickI();
   } else if (brickType === BrickType.J) {
@@ -373,4 +374,25 @@ function genBrickNONE(): Brick {
     BrickColor.NONE,
     BrickReserved.NONE,
   ];
+}
+
+export function getRandomNextBrick(): BrickType {
+  const rVal = getRandomInt(1, 7);
+  if (rVal === 1) {
+    return BrickType.I;
+  } else if (rVal === 2) {
+    return BrickType.J;
+  } else if (rVal === 3) {
+    return BrickType.L;
+  } else if (rVal === 4) {
+    return BrickType.O;
+  } else if (rVal === 5) {
+    return BrickType.S;
+  } else if (rVal === 6) {
+    return BrickType.T;
+  } else if (rVal === 7) {
+    return BrickType.Z;
+  } else {
+    return BrickType.NONE;
+  }
 }

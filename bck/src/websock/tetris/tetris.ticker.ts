@@ -3,6 +3,7 @@ export interface TetrisTickerDelegate {
 }
 
 export interface ITetrisTicker {
+  delegate?: TetrisTickerDelegate;
   setTicker(boardUid: string);
   clearTicker(boardUid: string);
   isExistsTicker(boardUid: string): boolean;

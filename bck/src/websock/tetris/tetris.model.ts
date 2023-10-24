@@ -1,4 +1,4 @@
-import { boardCreate } from './tetris.service.util';
+import { boardCreate } from './tetris.service.gen.util';
 import { Board } from './tetris.type';
 import { v4 as uuidv4 } from 'uuid';
 export interface ITetrisModel {
