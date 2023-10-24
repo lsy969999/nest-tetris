@@ -49,3 +49,17 @@ export type Brick = [
 
 export type Board = Brick[][];
 export type BrickLine = Brick[];
+
+export enum TetrisInput {
+  UP = 'UP',
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
+  DOWN = 'DOWN',
+  HOLD = 'HOLD',
+}
+
+export enum TetrisStatus {
+  START = 'START',
+  END = 'END',
+  PAUSE = 'PAUSE',
+}

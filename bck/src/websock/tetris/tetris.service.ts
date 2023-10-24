@@ -10,7 +10,7 @@ interface TetrisInputControl {
 }
 
 interface TetrisStatusControl {
-  start();
+  start(): string;
   end();
   pause();
 }
@@ -30,6 +30,17 @@ export class TetrisService implements ITetrisService, TetrisTickerDelegate {
     private readonly tetrisModel: ITetrisModel,
     private readonly tetrisTicker: ITetrisTicker,
   ) {}
+  start(): string {
+    const boardUid = this.tetrisModel.createBoard();
+
+    return boardUid;
+  }
+  end() {
+    throw new Error('Method not implemented.');
+  }
+  pause() {
+    throw new Error('Method not implemented.');
+  }
 
   inputUp() {
     throw new Error('Method not implemented.');
@@ -44,16 +55,6 @@ export class TetrisService implements ITetrisService, TetrisTickerDelegate {
     throw new Error('Method not implemented.');
   }
   inputHold() {
-    throw new Error('Method not implemented.');
-  }
-
-  start() {
-    throw new Error('Method not implemented.');
-  }
-  end() {
-    throw new Error('Method not implemented.');
-  }
-  pause() {
     throw new Error('Method not implemented.');
   }
 
