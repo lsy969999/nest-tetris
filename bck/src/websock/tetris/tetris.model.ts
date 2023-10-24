@@ -30,6 +30,7 @@ export class TetrisModel implements ITetrisModel {
   createBoard(): string {
     const uuid = uuidv4();
     const board = new TetrisModelBoard();
+    board.uid = uuid;
     board.board = boardCreate(this.option.row, this.option.col);
     this.boardsMap[uuid] = board;
     return uuid;

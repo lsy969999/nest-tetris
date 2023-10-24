@@ -1,3 +1,5 @@
-describe('Tetris Service Test', ()=>{
-  
-})
+describe('Tetris Service Test', () => {
+  it('test', () => {
+    expect(1).toBe(1);
+  });
+});
