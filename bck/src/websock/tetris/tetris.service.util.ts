@@ -1,5 +1,20 @@
 import { Board, Brick, BrickColor, BrickPosition, BrickReserved, BrickStatus, BrickType } from "./tetris.type";
 
+export function boardCreate(row: number = 10, col: number = 20): Board{
+  return Array.from({ length: col }, () =>
+    Array.from(
+      { length: row },
+      (_, index): Brick => [
+        BrickType.NONE,
+        BrickStatus.NONE,
+        BrickPosition.UP,
+        BrickColor.NONE,
+        BrickReserved.NONE,
+      ],
+    ),
+  );
+}
+
 export function genBrickBoard(brickType: BrickType): Board {
   if(brickType === BrickType.I){
     return genBrickIBoard();
