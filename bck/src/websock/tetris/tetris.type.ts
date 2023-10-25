@@ -37,6 +37,7 @@ export enum BrickColor {
 
 export enum BrickReserved {
   NONE = 0,
+  CENTER = 1,
 }
 
 export type Brick = [
