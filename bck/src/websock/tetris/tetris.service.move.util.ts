@@ -91,9 +91,12 @@ function rotateBrickIColckWise(board: Board): Board{
 
 
 
+
   //rotating
   //TODO
-
+  // droppingBrickPoints.forEach((colIdx, rowIdx)=>{
+  //   const distanceFromCenter = 
+  // })
   return board;
 }
 function rotateBrickICounterClockWise(){
