@@ -8,7 +8,16 @@ import { Server } from 'socket.io';
 import { Logger } from '@nestjs/common';
 import { createTetrisService } from './tetris/tetris.main';
 import { TetrisEmitDelegate } from './tetris/tetris.service';
-import { Board } from './tetris/tetris.type';
+import { Board, TetrisStatus, TetrisInput } from './tetris/tetris.type';
+
+type WsDto<T extends object> = {
+  type: string;
+  data: T;
+}
+
+type TetrisWsDto = {
+  boardUid?: string
+}
 
 const TO_SERVER = 'toServer';
 const TO_CLIENT = 'toClient';
@@ -29,26 +38,65 @@ export class WebsockGateway implements TetrisEmitDelegate {
   private readonly tetrisService = createTetrisService()
 
   @SubscribeMessage(TO_SERVER)
-  handleMessage(@MessageBody() message): void {
-    const START = 'START';
-    const END = 'END';
-
-    const LEFT = 'LEFT';
-    const RIGHT = 'RIGHT';
-    const UP = 'UP';
-    const DOWN = 'DOWN';
-    const SPACE = 'SPACE';
-
+  handleMessage(@MessageBody() message: WsDto<TetrisWsDto>): void {
     this.logger.log(`message: ${JSON.stringify(message)}`);
-    if (message.type === START) {
-      
-    } else if (message.type === END) {
-      
-    } else if (message.type === LEFT) {
-    } else if (message.type === RIGHT) {
-    } else if (message.type === UP) {
-    } else if (message.type === DOWN) {
-    } else if (message.type === SPACE) {
+    const t = message.type;
+    const d = message.data;
+    if(
+      t === TetrisStatus.START ||
+      t === TetrisStatus.END ||
+      t === TetrisStatus.PAUSE ||
+      t === TetrisStatus.RESUME
+    ) {
+      if (t === TetrisStatus.START) {
+        this.tetrisService.start();
+      }
+      if (t === TetrisStatus.END) {
+        const {boardUid} = d;
+        this.tetrisService.end(boardUid);
+      }
+      if (t === TetrisStatus.PAUSE) {
+        const {boardUid} = d;
+        this.tetrisService.pause(boardUid);
+      }
+      if (t === TetrisStatus.RESUME) {
+        const {boardUid} = d;
+        this.tetrisService.resume(boardUid);
+      }
+    }
+
+    if(
+      t === TetrisInput.DOWN ||
+      t === TetrisInput.UP ||
+      t === TetrisInput.HOLD ||
+      t === TetrisInput.LEFT ||
+      t === TetrisInput.RIGHT ||
+      t === TetrisInput.BELOW
+    ) {
+      if (t === TetrisInput.DOWN) {
+        const {boardUid} = d
+        this.tetrisService.inputDown(boardUid);
+      }
+      if (t === TetrisInput.UP) {
+        const {boardUid} = d
+        this.tetrisService.inputUp(boardUid);
+      }
+      if (t === TetrisInput.HOLD) {
+        const {boardUid} = d
+        this.tetrisService.inputHold(boardUid);
+      }
+      if (t === TetrisInput.LEFT) {
+        const {boardUid} = d
+        this.tetrisService.inputLeft(boardUid);
+      }
+      if (t === TetrisInput.RIGHT) {
+        const {boardUid} = d
+        this.tetrisService.inputRight(boardUid);
+      }
+      if (t === TetrisInput.BELOW) {
+        const {boardUid} = d
+        this.tetrisService.inputBelow(boardUid);
+      }
     }
   }
 

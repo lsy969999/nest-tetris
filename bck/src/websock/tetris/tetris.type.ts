@@ -57,10 +57,12 @@ export enum TetrisInput {
   RIGHT = 'RIGHT',
   DOWN = 'DOWN',
   HOLD = 'HOLD',
+  BELOW = 'BELOW'
 }
 
 export enum TetrisStatus {
   START = 'START',
   END = 'END',
   PAUSE = 'PAUSE',
+  RESUME = 'RESUME',
 }
