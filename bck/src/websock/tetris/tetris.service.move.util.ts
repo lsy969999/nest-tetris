@@ -1,5 +1,5 @@
 import { genBrick } from './tetris.service.gen.util';
-import { Board, BrickStatus } from './tetris.type';
+import { Board, BrickReserved, BrickStatus } from './tetris.type';
 
 //board[i][j]의 j의 length(마지막을 뒤져서 ok면 움직이자)
 export function moveBrickRight(board: Board): Board {
@@ -62,4 +62,88 @@ export function rotateBrickCounterClockWise(board: Board): Board {
 export function moveBrickBelow(board: Board): Board {
   //TODO
   return board;
+}
+
+//rotate I
+function rotateBrickIColckWise(board: Board): Board{
+  //center point pick
+  let centerBrickPoint: [number, number];
+  col:
+  for (let i = 0; i < board.length; i++) {
+    row:
+    for (let j = 0; j < board[i].length; j++) {
+      if(board[i][j][4] === BrickReserved.CENTER){
+        centerBrickPoint = [i, j];
+        break col;
+      }
+    }
+  }
+
+  //dropping brick list
+  let droppingBrickPoints: [number, number][]
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if(board[i][j][1] === BrickStatus.DROPPING && board[i][j][4] !== BrickReserved.CENTER){
+        droppingBrickPoints.push([i,j])        
+      }
+    }
+  }
+
+
+
+  //rotating
+  //TODO
+
+  return board;
+}
+function rotateBrickICounterClockWise(){
+  
+}
+
+//rotate J
+function rotateBrickJColckWise(){
+
+}
+function rotateBrickJCounterClockWise(){
+  
+}
+
+//rotate L
+function rotateBrickLColckWise(){
+
+}
+function rotateBrickLCounterClockWise(){
+  
+}
+
+//rotate O
+function rotateBrickOColckWise(){
+
+}
+function rotateBrickOCounterClockWise(){
+  
+}
+
+//rotate S
+function rotateBrickSColckWise(){
+
+}
+function rotateBrickSCounterClockWise(){
+  
+}
+
+//rotate T
+function rotateBrickTColckWise(){
+
+}
+function rotateBrickTCounterClockWise(){
+  
+}
+
+//rotate Z
+function rotateBrickZColckWise(){
+
+}
+function rotateBrickZCounterClockWise(){
+  
 }
