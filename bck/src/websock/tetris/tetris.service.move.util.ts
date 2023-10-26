@@ -5,7 +5,7 @@ import { Board, BrickReserved, BrickStatus } from './tetris.type';
 export function moveBrickRight(board: Board): Board {
   //right col scan
   for (let i = 0; i < board.length; i++) {
-    const rightCols = board[i][board[i].length]
+    const rightCols = board[i][board[i].length - 1]
     if(rightCols[1] === BrickStatus.DROPPING){
       return board;
     }

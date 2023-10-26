@@ -82,6 +82,7 @@ export class TetrisService implements ITetrisService, TetrisTickerDelegate {
   }
   inputRight(boardUid: string) {
     const selected = this.tetrisModel.selectBoard(boardUid);
+    console.log(selected)
     const result = moveBrickRight(selected.board);
     this.tetrisModel.updateBoard(selected.uid, result);
     this.serviceEmitDelegate.emit(boardUid, result);
@@ -128,6 +129,6 @@ export class TetrisService implements ITetrisService, TetrisTickerDelegate {
       }
       this.tetrisModel.updateBoard(boardUid, selected.board);
     }
-    this.serviceEmitDelegate.emit(boardUid, selected.board);
+    this.serviceEmitDelegate?.emit(boardUid, selected.board);
   }
 }

@@ -36,6 +36,9 @@ export class WebsockGateway implements TetrisEmitDelegate {
   @WebSocketServer()
   private readonly server: Server;
   private readonly tetrisService = createTetrisService()
+  constructor(){
+    this.tetrisService.serviceEmitDelegate = this
+  }
 
   @SubscribeMessage(TO_SERVER)
   handleMessage(@MessageBody() message: WsDto<TetrisWsDto>): void {
@@ -53,6 +56,7 @@ export class WebsockGateway implements TetrisEmitDelegate {
       }
       if (t === TetrisStatus.END) {
         const {boardUid} = d;
+        console.log(boardUid + 'END')
         this.tetrisService.end(boardUid);
       }
       if (t === TetrisStatus.PAUSE) {
@@ -107,8 +111,8 @@ export class WebsockGateway implements TetrisEmitDelegate {
    */
   emit(boardUid: string, board: Board) {
     this.server.emit(TO_CLIENT, {
-      type: 'TEST',
-      data: { row: 10, col: 20 },
+      type: 'TICK',
+      data: { boardUid, board },
     });
   }
 }
